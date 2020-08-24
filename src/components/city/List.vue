@@ -5,7 +5,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">{{ this.currentCity }}</div>
+                        <div class="button">{{ this.city }}</div>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,6 @@
 
 <script>
 import BScroll from "better-scroll";
-
 import {mapState,mapMutations} from 'vuex'
 
 export default {
@@ -58,26 +57,22 @@ export default {
         letter: String
     },
     methods: {
+        ...mapMutations(['changeCity']),
         handleClick (city) {
             this.changeCity(city);
             this.$router.push('/');
-        },
-        ...mapMutations(['changeCity'])
+        }
     },
     computed: {
-        ...mapState({
-            currentCity:'city'
-        })
+        ...mapState(['city'])
     },
     watch: {
         letter: function() {
             if (this.letter) {
                 // 获取想要到达的位置的 DOM 元素对象
-                const el = this.$refs[this.letter][0]; // 循环时 letter 是数组
-                // console.log(el);
+                const el = this.$refs[this.letter][0];
                 this.scroll.scrollToElement(el);
             }
-            // console.log(this.letter);
         }
     },
     mounted: function() {

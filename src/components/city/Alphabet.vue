@@ -22,10 +22,10 @@ export default {
         return {
             touchStatus: false,
             startY:0,
-            timer:null      //  节流
+            timer:null
         }
     },
-    updated: function(){
+    updated(){
         this.startY=this.$refs['A'][0].offsetTop
     },
     computed: {
@@ -51,6 +51,7 @@ export default {
                     clearTimeout(this.timer);
                 }
                 this.timer=setTimeout(()=>{
+                    // 由每一项字母的高度，转化为当前位置字母的序号
                     const touchY=e.touches[0].clientY-79;
                     const index=Math.floor((touchY-this.startY)/22);
                     if(index>=0&&index<this.letters.length){
@@ -73,18 +74,15 @@ export default {
     display:flex;
     flex-direction:column;
     justify-content: center;
-    // align-items: center;
     position:absolute;
     top:1.58rem;
     right:0;
     bottom:0;
     width:.4rem;
-
     .item{
         line-height:.45rem;
         color:$bgColor;
         text-align:center;
     }
 }
-
 </style>

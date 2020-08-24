@@ -10,6 +10,7 @@
                 </div>
             </div>
         </div>
+        <!-- 大图预览 -->
         <common-fade>
             <common-gallary
                 :imgs="gallaryImgs"
@@ -21,8 +22,8 @@
 </template>
 
 <script>
-import CommonGallary from "common/gallary/Gallary";
-import CommonFade from "common/fade/Fade";
+import CommonGallary from "../common/gallary/Gallary";
+import CommonFade from "../common/fade/Fade";
 
 export default {
     name: "DetailBanner",
